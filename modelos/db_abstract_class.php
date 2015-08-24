@@ -3,9 +3,9 @@
         public $isConnected;
         protected $datab;
         private $username = "root";
-        private $password = "";
-        private $host = "localhost:";
-        private $dbname = "nuevoPhp";
+        private $password = "1234";
+        private $host = "localhost:3308";
+        private $dbname = "mvc";
 
         # métodos abstractos para ABM de clases que hereden 
         abstract protected static function buscarForId($id);
