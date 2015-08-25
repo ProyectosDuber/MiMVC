@@ -3,8 +3,8 @@
         public $isConnected;
         protected $datab;
         private $username = "root";
-        private $password = "1234";
-        private $host = "localhost:3308";
+        private $password = "";
+        private $host = "localhost";
         private $dbname = "mvc";
 
         # métodos abstractos para ABM de clases que hereden 

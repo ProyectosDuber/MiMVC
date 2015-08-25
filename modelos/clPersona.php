@@ -1,6 +1,6 @@
 <?php
 
-require_once './db_abstract_class.php';
+require_once 'db_abstract_class.php';
 class clPersona extends db_abstract_class {
     private $idPersona;
     private $cedula;
@@ -122,7 +122,7 @@ class clPersona extends db_abstract_class {
 
 
 
-    protected function editar() {
+    public function editar() {
         $query = "UPDATE Personas SET cedula=?,nombres=?,apellidos=?,sexo=?,fechaDeNacimiento=?,telefono=?,email=?,direccion=? where idPersona=?";
        $params = array(
        $this->cedula,
@@ -140,11 +140,11 @@ class clPersona extends db_abstract_class {
             $this->Disconnect();
     }
 
-    protected function eliminar() {
+    public function eliminar() {
         
     }
 
-    protected function insertar() {
+    public function insertar() {
              $query = "INSERT INTO Personas VALUES('NULL',?,?,?,?,?,?,?,?)";
        $params = array(
        $this->cedula,
@@ -162,15 +162,15 @@ class clPersona extends db_abstract_class {
         $this->Disconnect();
     }
 
-    protected static function buscar($query) {
+    public static function buscar($query) {
         
     }
 
-    protected static function buscarForId($id) {
+    public static function buscarForId($id) {
         
     }
 
-    protected static function getAll() {
+    public static function getAll() {
         
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once (__DIR__.'../modelos/clPersona.php');
+require_once (__DIR__.'/../modelos/clPersona.php');
 
 if(!empty($_GET['action'])){
 	usuarios_controller::main($_GET['action']);
@@ -20,6 +20,11 @@ class usuarios_controller{
 	
 	static public function crear (){
 		try {
+                   if(  $_POST['cedula'] ==null){
+                       header("Location: ../vista/pages/frmNewUser.php?respuesta=Incompleto");
+                   }else{
+                    
+                    
 			$arrayUser = array();
 			$arrayUser['cedula'] = $_POST['cedula'];
 			$arrayUser['nombres'] = $_POST['nombres'];
@@ -30,11 +35,14 @@ class usuarios_controller{
                         $arrayUser['email'] = $_POST['email'];
                         $arrayUser['direccion'] = $_POST['direccion'];
 			
-			$usuario = new usuarios ($arrayUser);
+			$usuario = new clPersona ($arrayUser);
+                        echo $usuario->getDireccion();
 			$usuario->insertar();
-			header("Location: ../frmNewUser.php?respuesta=correcto");
+                        header("Location: ../vista/pages/frmNewUser.php?respuesta=correcto");
+                   }
+			
 		} catch (Exception $e) {
-			header("Location: ../frmNewUser.php?respuesta=error");
+			header("Location: ../vista/pages/frmNewUser.php?respuesta=error");
 		}
 	}
 	
@@ -51,7 +59,7 @@ class usuarios_controller{
                         $arrayUser['email'] = $_POST['email'];
                         $arrayUser['direccion'] = $_POST['direccion'];
 			
-			$usuario = new usuarios ($arrayUser);
+			$usuario = new clPersona ($arrayUser);
 			$usuario->editar();
 			header("Location: ../frmNewUser.php?respuesta=correcto");
 		} catch (Exception $e) {
